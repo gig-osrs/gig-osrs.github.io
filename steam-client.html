@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-02-26 Fri 01:17 -->
+<!-- 2021-02-26 Fri 03:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSRS Steam/C++ Client Stuff</title>
@@ -194,7 +194,7 @@
 </style>
 <style> body { font-family: sans-serif; max-width: 800px; margin: auto; background-color: #3f3f3f; color: #dcdccc; } </style>
 <style> pre { box-shadow: 0px 0px 0px; background-color: #494949; border: 0px; } </style>
-<style> a { color: #d0bf8f; } </style>
+<style> a { color: #d0bf8f; } h1 { color: #8cd0d3; } h2 { color: #dfaf8f; } h3 { color: #bfebbf; } h4 { color: #7cb8bb; } </style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -249,25 +249,31 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org689a39f">What is this?</a></li>
-<li><a href="#orgfe51ac7">Static stuff (osclient.exe)</a>
+<li><a href="#org173f66e">What is this?</a></li>
+<li><a href="#orgb6c330f">Static stuff (osclient.exe)</a>
 <ul>
-<li><a href="#org942a2b8">Strings</a></li>
-<li><a href="#orgdf2ea2d">Pictures</a></li>
+<li><a href="#org3a6a358">Strings</a>
+<ul>
+<li><a href="#org8042b9e">NXT</a></li>
+<li><a href="#org96b1df5">Multilingual strings</a></li>
+<li><a href="#org3db4ed1">Draw distance</a></li>
 </ul>
 </li>
-<li><a href="#org3f9a962">Dynamic stuff (while the game is running&#x2026;)</a>
-<ul>
-<li><a href="#orgd865bc5">Stat boosts</a></li>
-<li><a href="#org1f616e5">NPC animations</a>
-<ul>
-<li><a href="#org34ac5b5">Finding a consistent entity/NPC list</a></li>
+<li><a href="#orgce545e8">Pictures</a></li>
 </ul>
 </li>
-<li><a href="#orgf71c92f">Client settings</a>
+<li><a href="#org9d257a0">Dynamic stuff (while the game is running&#x2026;)</a>
 <ul>
-<li><a href="#orgb3532bf">Draw distance</a></li>
-<li><a href="#org0449293">Interface scaling</a></li>
+<li><a href="#org521a345">Stat boosts</a></li>
+<li><a href="#org26ccb30">NPC animations</a>
+<ul>
+<li><a href="#orgd16bb98">Finding a consistent entity/NPC list</a></li>
+</ul>
+</li>
+<li><a href="#org5d62d7b">Client settings</a>
+<ul>
+<li><a href="#orgc7f838e">Draw distance</a></li>
+<li><a href="#orgf90ee07">Interface scaling</a></li>
 </ul>
 </li>
 </ul>
@@ -276,9 +282,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org689a39f" class="outline-2">
-<h2 id="org689a39f">What is this?</h2>
-<div class="outline-text-2" id="text-org689a39f">
+<div id="outline-container-org173f66e" class="outline-2">
+<h2 id="org173f66e">What is this?</h2>
+<div class="outline-text-2" id="text-org173f66e">
 <p>
 Ever since the Steam/C++ client was announced, I've been looking forward to
 digging through it. This document is mostly just personal notes/ramblings to
@@ -287,17 +293,17 @@ help me keep track of what I have and haven't done so far.
 </div>
 </div>
 
-<div id="outline-container-orgfe51ac7" class="outline-2">
-<h2 id="orgfe51ac7">Static stuff (osclient.exe)</h2>
-<div class="outline-text-2" id="text-orgfe51ac7">
+<div id="outline-container-orgb6c330f" class="outline-2">
+<h2 id="orgb6c330f">Static stuff (osclient.exe)</h2>
+<div class="outline-text-2" id="text-orgb6c330f">
 </div>
-<div id="outline-container-org942a2b8" class="outline-3">
-<h3 id="org942a2b8">Strings</h3>
-<div class="outline-text-3" id="text-org942a2b8">
-<p>
-<b>NXT</b>
-</p>
-
+<div id="outline-container-org3a6a358" class="outline-3">
+<h3 id="org3a6a358">Strings</h3>
+<div class="outline-text-3" id="text-org3a6a358">
+</div>
+<div id="outline-container-org8042b9e" class="outline-4">
+<h4 id="org8042b9e">NXT</h4>
+<div class="outline-text-4" id="text-org8042b9e">
 <p>
 These strings suggest that Jagex is calling this client "NXT" internally. In
 case you don't know, this is also what they called their revamped RS3 client
@@ -314,11 +320,12 @@ NxtApp
 NXT-Windows-64
 D:\bb-b-01\NXT-OS137-BWXFS\build\nxt\bin\osclient\FINAL\osclient.pdb
 </pre>
+</div>
+</div>
 
-<p>
-<b>Multilingual strings</b>
-</p>
-
+<div id="outline-container-org96b1df5" class="outline-4">
+<h4 id="org96b1df5">Multilingual strings</h4>
+<div class="outline-text-4" id="text-org96b1df5">
 <p>
 I'm not going to write all of these, but non-English strings exist in the
 binary:
@@ -335,11 +342,12 @@ I don't know if they've fixed this in RS3, but historically, Jagex/OSRS have
 never had very good, if any, support for anything besides English. So this could
 be a good start?
 </p>
+</div>
+</div>
 
-<p>
-<b>Draw distance</b>
-</p>
-
+<div id="outline-container-org3db4ed1" class="outline-4">
+<h4 id="org3db4ed1">Draw distance</h4>
+<div class="outline-text-4" id="text-org3db4ed1">
 <p>
 Maybe these are just leftovers from graphics libraries, but these strings might
 suggest an option to change the draw distance was/is being worked on:
@@ -353,10 +361,11 @@ Draw Distance is not between min and max(%d/%d).
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgdf2ea2d" class="outline-3">
-<h3 id="orgdf2ea2d">Pictures</h3>
-<div class="outline-text-3" id="text-orgdf2ea2d">
+<div id="outline-container-orgce545e8" class="outline-3">
+<h3 id="orgce545e8">Pictures</h3>
+<div class="outline-text-3" id="text-orgce545e8">
 <p>
 There are a few PNGs embedded in the binary that are error messages of sorts
 offered in multiple languages.
@@ -373,13 +382,13 @@ German: <code>https://i.imgur.com/YoOOVlI.png</code>
 </div>
 </div>
 
-<div id="outline-container-org3f9a962" class="outline-2">
-<h2 id="org3f9a962">Dynamic stuff (while the game is running&#x2026;)</h2>
-<div class="outline-text-2" id="text-org3f9a962">
+<div id="outline-container-org9d257a0" class="outline-2">
+<h2 id="org9d257a0">Dynamic stuff (while the game is running&#x2026;)</h2>
+<div class="outline-text-2" id="text-org9d257a0">
 </div>
-<div id="outline-container-orgd865bc5" class="outline-3">
-<h3 id="orgd865bc5">Stat boosts</h3>
-<div class="outline-text-3" id="text-orgd865bc5">
+<div id="outline-container-org521a345" class="outline-3">
+<h3 id="org521a345">Stat boosts</h3>
+<div class="outline-text-3" id="text-org521a345">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">The order here matches how player stats are laid out in memory.</span>
 <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Yes, prayer really comes betwen ranged and magic.</span>
@@ -432,9 +441,9 @@ At this point, I had enough information to make a basic stat-reader:
 </div>
 </div>
 
-<div id="outline-container-org1f616e5" class="outline-3">
-<h3 id="org1f616e5">NPC animations</h3>
-<div class="outline-text-3" id="text-org1f616e5">
+<div id="outline-container-org26ccb30" class="outline-3">
+<h3 id="org26ccb30">NPC animations</h3>
+<div class="outline-text-3" id="text-org26ccb30">
 <p>
 The following instruction seems to be responsible for writing the
 active/non-idle animations on a player or NPC:
@@ -524,9 +533,9 @@ cow attack: 5849
 </div>
 </div>
 
-<div id="outline-container-org34ac5b5" class="outline-4">
-<h4 id="org34ac5b5">Finding a consistent entity/NPC list</h4>
-<div class="outline-text-4" id="text-org34ac5b5">
+<div id="outline-container-orgd16bb98" class="outline-4">
+<h4 id="orgd16bb98">Finding a consistent entity/NPC list</h4>
+<div class="outline-text-4" id="text-orgd16bb98">
 <p>
 When an alt disappears:
 </p>
@@ -617,13 +626,13 @@ animation, but it's good enough for a Maiden proof-of-concept.</li>
 </div>
 </div>
 
-<div id="outline-container-orgf71c92f" class="outline-3">
-<h3 id="orgf71c92f">Client settings</h3>
-<div class="outline-text-3" id="text-orgf71c92f">
+<div id="outline-container-org5d62d7b" class="outline-3">
+<h3 id="org5d62d7b">Client settings</h3>
+<div class="outline-text-3" id="text-org5d62d7b">
 </div>
-<div id="outline-container-orgb3532bf" class="outline-4">
-<h4 id="orgb3532bf">Draw distance</h4>
-<div class="outline-text-4" id="text-orgb3532bf">
+<div id="outline-container-orgc7f838e" class="outline-4">
+<h4 id="orgc7f838e">Draw distance</h4>
+<div class="outline-text-4" id="text-orgc7f838e">
 <p>
 The strings <code>getdrawdistance</code> and <code>setdrawdistance</code> exist around other known
 chat commands like <code>renderself</code> and <code>displayfps</code>. Long story short:
@@ -651,9 +660,9 @@ value
 </div>
 </div>
 
-<div id="outline-container-org0449293" class="outline-4">
-<h4 id="org0449293">Interface scaling</h4>
-<div class="outline-text-4" id="text-org0449293">
+<div id="outline-container-orgf90ee07" class="outline-4">
+<h4 id="orgf90ee07">Interface scaling</h4>
+<div class="outline-text-4" id="text-orgf90ee07">
 <p>
 Interface scaling is stored as a float. Due to rounding errors, the scaling
 percentages are slightly off if you're too precise:
@@ -692,7 +701,6 @@ checking beforehand:
 <span style="color: #93E0E3;">minss</span> <span style="color: #F0DFAF; font-weight: bold;">xmm1</span>,[1403D9678] <span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">min(xmm1, 5.00)</span>
 <span style="color: #93E0E3;">movss</span> [rcx+50],xmm1
 </pre>
-</div>
 </div>
 </div>
 </div>
