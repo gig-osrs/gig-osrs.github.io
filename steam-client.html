@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-02-25 Thu 19:12 -->
+<!-- 2021-02-25 Thu 19:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSRS Steam/C++ Client Stuff</title>
@@ -249,19 +249,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org452696a">What is this?</a></li>
-<li><a href="#org083ebbe">Static stuff (osclient.exe)</a>
+<li><a href="#org2ad7860">What is this?</a></li>
+<li><a href="#org3a64b82">Static stuff (osclient.exe)</a>
 <ul>
-<li><a href="#org964057a">Strings</a></li>
-<li><a href="#org3732044">Pictures</a></li>
+<li><a href="#org3323388">Strings</a></li>
+<li><a href="#org55cec5f">Pictures</a></li>
 </ul>
 </li>
-<li><a href="#org1e81d98">Dynamic stuff (while the game is running&#x2026;)</a>
+<li><a href="#org6b1e335">Dynamic stuff (while the game is running&#x2026;)</a>
 <ul>
-<li><a href="#org54ec42e">Stat boosts</a></li>
-<li><a href="#org2b01f7e">NPC animations</a>
+<li><a href="#org9bc94db">Stat boosts</a></li>
+<li><a href="#orgef305f3">NPC animations</a>
 <ul>
-<li><a href="#org726c569">Finding a consistent entity/NPC list</a></li>
+<li><a href="#org8907661">Finding a consistent entity/NPC list</a></li>
 </ul>
 </li>
 </ul>
@@ -270,9 +270,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org452696a" class="outline-2">
-<h2 id="org452696a">What is this?</h2>
-<div class="outline-text-2" id="text-org452696a">
+<div id="outline-container-org2ad7860" class="outline-2">
+<h2 id="org2ad7860">What is this?</h2>
+<div class="outline-text-2" id="text-org2ad7860">
 <p>
 Ever since the Steam/C++ client was announced, I've been looking forward to
 digging through it. This document is mostly just personal notes/ramblings to
@@ -281,13 +281,13 @@ help me keep track of what I have and haven't done so far.
 </div>
 </div>
 
-<div id="outline-container-org083ebbe" class="outline-2">
-<h2 id="org083ebbe">Static stuff (osclient.exe)</h2>
-<div class="outline-text-2" id="text-org083ebbe">
+<div id="outline-container-org3a64b82" class="outline-2">
+<h2 id="org3a64b82">Static stuff (osclient.exe)</h2>
+<div class="outline-text-2" id="text-org3a64b82">
 </div>
-<div id="outline-container-org964057a" class="outline-3">
-<h3 id="org964057a">Strings</h3>
-<div class="outline-text-3" id="text-org964057a">
+<div id="outline-container-org3323388" class="outline-3">
+<h3 id="org3323388">Strings</h3>
+<div class="outline-text-3" id="text-org3323388">
 <p>
 <b>NXT</b>
 </p>
@@ -348,9 +348,9 @@ Draw Distance is not between min and max(%d/%d).
 </div>
 </div>
 
-<div id="outline-container-org3732044" class="outline-3">
-<h3 id="org3732044">Pictures</h3>
-<div class="outline-text-3" id="text-org3732044">
+<div id="outline-container-org55cec5f" class="outline-3">
+<h3 id="org55cec5f">Pictures</h3>
+<div class="outline-text-3" id="text-org55cec5f">
 <p>
 There are a few PNGs embedded in the binary that are error messages of sorts
 offered in multiple languages.
@@ -367,13 +367,13 @@ German: <code>https://i.imgur.com/YoOOVlI.png</code>
 </div>
 </div>
 
-<div id="outline-container-org1e81d98" class="outline-2">
-<h2 id="org1e81d98">Dynamic stuff (while the game is running&#x2026;)</h2>
-<div class="outline-text-2" id="text-org1e81d98">
+<div id="outline-container-org6b1e335" class="outline-2">
+<h2 id="org6b1e335">Dynamic stuff (while the game is running&#x2026;)</h2>
+<div class="outline-text-2" id="text-org6b1e335">
 </div>
-<div id="outline-container-org54ec42e" class="outline-3">
-<h3 id="org54ec42e">Stat boosts</h3>
-<div class="outline-text-3" id="text-org54ec42e">
+<div id="outline-container-org9bc94db" class="outline-3">
+<h3 id="org9bc94db">Stat boosts</h3>
+<div class="outline-text-3" id="text-org9bc94db">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">The order here matches how player stats are laid out in memory.</span>
 <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Yes, prayer really comes betwen ranged and magic.</span>
@@ -426,9 +426,9 @@ At this point, I had enough information to make a basic stat-reader:
 </div>
 </div>
 
-<div id="outline-container-org2b01f7e" class="outline-3">
-<h3 id="org2b01f7e">NPC animations</h3>
-<div class="outline-text-3" id="text-org2b01f7e">
+<div id="outline-container-orgef305f3" class="outline-3">
+<h3 id="orgef305f3">NPC animations</h3>
+<div class="outline-text-3" id="text-orgef305f3">
 <p>
 The following instruction seems to be responsible for writing the
 active/non-idle animations on a player or NPC:
@@ -518,9 +518,9 @@ cow attack: 5849
 </div>
 </div>
 
-<div id="outline-container-org726c569" class="outline-4">
-<h4 id="org726c569">Finding a consistent entity/NPC list</h4>
-<div class="outline-text-4" id="text-org726c569">
+<div id="outline-container-org8907661" class="outline-4">
+<h4 id="org8907661">Finding a consistent entity/NPC list</h4>
+<div class="outline-text-4" id="text-org8907661">
 <p>
 When an alt disappears:
 </p>
@@ -587,7 +587,9 @@ think about it too much.
 <li>Slight terminology correction: for players, IDX is the pid (player id),
 but for NPCs, IDX is&#x2026; the index</li>
 </ul></li>
-<li></li>
+<li>Now that we know that <code>r14</code> is based on the NPC's index multiplied by 2,
+I'm guessing that the size of this list is the maximum index multiplied
+by 2.</li>
 </ul></li>
 <li>For each entity in the list, how can I get its name (e.g. Cow, Maiden of
 Sugadinti)?</li>
@@ -598,7 +600,7 @@ Sugadinti)?</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-02-25 Thu 19:12</p>
+<p class="date">Created: 2021-02-25 Thu 19:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
