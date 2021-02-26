@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-02-25 Thu 19:44 -->
+<!-- 2021-02-26 Fri 01:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSRS Steam/C++ Client Stuff</title>
@@ -249,19 +249,25 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2ad7860">What is this?</a></li>
-<li><a href="#org3a64b82">Static stuff (osclient.exe)</a>
+<li><a href="#org689a39f">What is this?</a></li>
+<li><a href="#orgfe51ac7">Static stuff (osclient.exe)</a>
 <ul>
-<li><a href="#org3323388">Strings</a></li>
-<li><a href="#org55cec5f">Pictures</a></li>
+<li><a href="#org942a2b8">Strings</a></li>
+<li><a href="#orgdf2ea2d">Pictures</a></li>
 </ul>
 </li>
-<li><a href="#org6b1e335">Dynamic stuff (while the game is running&#x2026;)</a>
+<li><a href="#org3f9a962">Dynamic stuff (while the game is running&#x2026;)</a>
 <ul>
-<li><a href="#org9bc94db">Stat boosts</a></li>
-<li><a href="#orgef305f3">NPC animations</a>
+<li><a href="#orgd865bc5">Stat boosts</a></li>
+<li><a href="#org1f616e5">NPC animations</a>
 <ul>
-<li><a href="#org8907661">Finding a consistent entity/NPC list</a></li>
+<li><a href="#org34ac5b5">Finding a consistent entity/NPC list</a></li>
+</ul>
+</li>
+<li><a href="#orgf71c92f">Client settings</a>
+<ul>
+<li><a href="#orgb3532bf">Draw distance</a></li>
+<li><a href="#org0449293">Interface scaling</a></li>
 </ul>
 </li>
 </ul>
@@ -270,9 +276,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2ad7860" class="outline-2">
-<h2 id="org2ad7860">What is this?</h2>
-<div class="outline-text-2" id="text-org2ad7860">
+<div id="outline-container-org689a39f" class="outline-2">
+<h2 id="org689a39f">What is this?</h2>
+<div class="outline-text-2" id="text-org689a39f">
 <p>
 Ever since the Steam/C++ client was announced, I've been looking forward to
 digging through it. This document is mostly just personal notes/ramblings to
@@ -281,13 +287,13 @@ help me keep track of what I have and haven't done so far.
 </div>
 </div>
 
-<div id="outline-container-org3a64b82" class="outline-2">
-<h2 id="org3a64b82">Static stuff (osclient.exe)</h2>
-<div class="outline-text-2" id="text-org3a64b82">
+<div id="outline-container-orgfe51ac7" class="outline-2">
+<h2 id="orgfe51ac7">Static stuff (osclient.exe)</h2>
+<div class="outline-text-2" id="text-orgfe51ac7">
 </div>
-<div id="outline-container-org3323388" class="outline-3">
-<h3 id="org3323388">Strings</h3>
-<div class="outline-text-3" id="text-org3323388">
+<div id="outline-container-org942a2b8" class="outline-3">
+<h3 id="org942a2b8">Strings</h3>
+<div class="outline-text-3" id="text-org942a2b8">
 <p>
 <b>NXT</b>
 </p>
@@ -348,9 +354,9 @@ Draw Distance is not between min and max(%d/%d).
 </div>
 </div>
 
-<div id="outline-container-org55cec5f" class="outline-3">
-<h3 id="org55cec5f">Pictures</h3>
-<div class="outline-text-3" id="text-org55cec5f">
+<div id="outline-container-orgdf2ea2d" class="outline-3">
+<h3 id="orgdf2ea2d">Pictures</h3>
+<div class="outline-text-3" id="text-orgdf2ea2d">
 <p>
 There are a few PNGs embedded in the binary that are error messages of sorts
 offered in multiple languages.
@@ -367,13 +373,13 @@ German: <code>https://i.imgur.com/YoOOVlI.png</code>
 </div>
 </div>
 
-<div id="outline-container-org6b1e335" class="outline-2">
-<h2 id="org6b1e335">Dynamic stuff (while the game is running&#x2026;)</h2>
-<div class="outline-text-2" id="text-org6b1e335">
+<div id="outline-container-org3f9a962" class="outline-2">
+<h2 id="org3f9a962">Dynamic stuff (while the game is running&#x2026;)</h2>
+<div class="outline-text-2" id="text-org3f9a962">
 </div>
-<div id="outline-container-org9bc94db" class="outline-3">
-<h3 id="org9bc94db">Stat boosts</h3>
-<div class="outline-text-3" id="text-org9bc94db">
+<div id="outline-container-orgd865bc5" class="outline-3">
+<h3 id="orgd865bc5">Stat boosts</h3>
+<div class="outline-text-3" id="text-orgd865bc5">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">The order here matches how player stats are laid out in memory.</span>
 <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Yes, prayer really comes betwen ranged and magic.</span>
@@ -426,9 +432,9 @@ At this point, I had enough information to make a basic stat-reader:
 </div>
 </div>
 
-<div id="outline-container-orgef305f3" class="outline-3">
-<h3 id="orgef305f3">NPC animations</h3>
-<div class="outline-text-3" id="text-orgef305f3">
+<div id="outline-container-org1f616e5" class="outline-3">
+<h3 id="org1f616e5">NPC animations</h3>
+<div class="outline-text-3" id="text-org1f616e5">
 <p>
 The following instruction seems to be responsible for writing the
 active/non-idle animations on a player or NPC:
@@ -518,9 +524,9 @@ cow attack: 5849
 </div>
 </div>
 
-<div id="outline-container-org8907661" class="outline-4">
-<h4 id="org8907661">Finding a consistent entity/NPC list</h4>
-<div class="outline-text-4" id="text-org8907661">
+<div id="outline-container-org34ac5b5" class="outline-4">
+<h4 id="org34ac5b5">Finding a consistent entity/NPC list</h4>
+<div class="outline-text-4" id="text-org34ac5b5">
 <p>
 When an alt disappears:
 </p>
@@ -592,16 +598,105 @@ I'm guessing that the size of this list is the maximum index multiplied
 by 2.</li>
 </ul></li>
 <li>For each entity in the list, how can I get its name (e.g. Cow, Maiden of
-Sugadinti)?</li>
+Sugadinti)?
+<ul class="org-ul">
+<li>I'm stupid and it took me a while to realize that every NPC has a
+particular ID. See <a href="https://github.com/open-osrs/runelite/blob/master/runelite-api/src/main/java/net/runelite/api/NpcID.java">here</a>. However, finding the ID of an NPC in memory has
+been surprisingly difficult: it doesn't seem to be anywhere near the NPC
+struct I've been looking at, and I can't find it through other methods
+(like searching for 8360-&gt;8361-&gt;8362 etc. at Maiden).
+<ul class="org-ul">
+<li>I <i>still</i> can't find an easy way to find the ID, so I'm going to be lazy
+and track it by idle animation ID. For Maiden, this is 8090. This
+probably wouldn't work very well for things that share the same idle
+animation, but it's good enough for a Maiden proof-of-concept.</li>
+</ul></li>
+</ul></li>
 </ol>
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgf71c92f" class="outline-3">
+<h3 id="orgf71c92f">Client settings</h3>
+<div class="outline-text-3" id="text-orgf71c92f">
+</div>
+<div id="outline-container-orgb3532bf" class="outline-4">
+<h4 id="orgb3532bf">Draw distance</h4>
+<div class="outline-text-4" id="text-orgb3532bf">
+<p>
+The strings <code>getdrawdistance</code> and <code>setdrawdistance</code> exist around other known
+chat commands like <code>renderself</code> and <code>displayfps</code>. Long story short:
+</p>
+
+<ul class="org-ul">
+<li>::getdrawdistance will print your current draw distance</li>
+<li>::setdrawdistance &lt;25-90&gt; will adjust your current draw distance</li>
+</ul>
+
+<p>
+After a quick google, it turns out I'm not the first person to find this:
+see <a href="https://www.reddit.com/r/2007scape/comments/lrmqo0/psa_steam_client_supports_extended_draw_distance/">here</a>. Since Mod Sween says "we're going to be disabling this for a while",
+let's find the draw distance value in memory before they prevent us from writing
+to it:
+</p>
+<ul class="org-ul">
+<li><code>89 05 2c463400: mov [14043edf0], eax</code> is what's responsible for writing the
+value
+<ul class="org-ul">
+<li>Well, that was easy. It's not often that you see something as simple as
+"copy this value directly into this address" without any extra registers.</li>
+</ul></li>
+</ul>
 </div>
 </div>
-<div id="postamble" class="status">
-<p class="date">Created: 2021-02-25 Thu 19:44</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+
+<div id="outline-container-org0449293" class="outline-4">
+<h4 id="org0449293">Interface scaling</h4>
+<div class="outline-text-4" id="text-org0449293">
+<p>
+Interface scaling is stored as a float. Due to rounding errors, the scaling
+percentages are slightly off if you're too precise:
+</p>
+
+<ul class="org-ul">
+<li>100%: 1</li>
+<li>110%: 1.100000024</li>
+<li>120%: 1.199999928</li>
+<li>&#x2026;</li>
+<li>390%: 3.899999857</li>
+<li>400%: 4</li>
+</ul>
+
+<p>
+Although the settings restrict you to 100%-400%, setting the value in memory
+outside of these bounds seems to work fine. Going below 1.0 gives you a tiny
+client, and going above 4.0 would probably give you a massive client (I don't
+have enough pixels to test this though).
+</p>
+
+<p>
+Unfortunately, this value is ignored when in fixed mode, so it's not trivial to
+hack together a stretched fixed mode.
+</p>
+
+<p>
+The instruction responsible for writing the interface scaling value is <code>F3 0F11
+49 50: movss [rcx+50],xmm1</code>. Although it doesn't stop us from editing the final
+scaling value, the value in xmm1 that gets mov'd there does undergo some bounds
+checking beforehand:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-asm"><span style="color: #93E0E3;">maxss</span> <span style="color: #F0DFAF; font-weight: bold;">xmm1</span>,[1403D9458] <span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">max(xmm1, 1.00)</span>
+<span style="color: #93E0E3;">minss</span> <span style="color: #F0DFAF; font-weight: bold;">xmm1</span>,[1403D9678] <span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">min(xmm1, 5.00)</span>
+<span style="color: #93E0E3;">movss</span> [rcx+50],xmm1
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>
