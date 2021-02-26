@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-25 Thu 19:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OSRS Steam/C++ Client Stuff</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style> body { font-family: sans-serif; max-width: 800px; margin: auto; background-color: #3f3f3f; color: #dcdccc; } </style>
+<style> pre { box-shadow: 0px 0px 0px; background-color: #494949; border: 0px; } </style>
+<style> a { color: #d0bf8f; } </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">OSRS Steam/C++ Client Stuff</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org452696a">What is this?</a></li>
+<li><a href="#org083ebbe">Static stuff (osclient.exe)</a>
+<ul>
+<li><a href="#org964057a">Strings</a></li>
+<li><a href="#org3732044">Pictures</a></li>
+</ul>
+</li>
+<li><a href="#org1e81d98">Dynamic stuff (while the game is running&#x2026;)</a>
+<ul>
+<li><a href="#org54ec42e">Stat boosts</a></li>
+<li><a href="#org2b01f7e">NPC animations</a>
+<ul>
+<li><a href="#org726c569">Finding a consistent entity/NPC list</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org452696a" class="outline-2">
+<h2 id="org452696a">What is this?</h2>
+<div class="outline-text-2" id="text-org452696a">
+<p>
+Ever since the Steam/C++ client was announced, I've been looking forward to
+digging through it. This document is mostly just personal notes/ramblings to
+help me keep track of what I have and haven't done so far.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org083ebbe" class="outline-2">
+<h2 id="org083ebbe">Static stuff (osclient.exe)</h2>
+<div class="outline-text-2" id="text-org083ebbe">
+</div>
+<div id="outline-container-org964057a" class="outline-3">
+<h3 id="org964057a">Strings</h3>
+<div class="outline-text-3" id="text-org964057a">
+<p>
+<b>NXT</b>
+</p>
+
+<p>
+These strings suggest that Jagex is calling this client "NXT" internally. In
+case you don't know, this is also what they called their revamped RS3 client
+after they scrapped the HTML5 client.
+</p>
+
+<pre class="example">
+NXT:%6i %6i %6i
+D:/bb-b-01/NXT-OS137-BWXFS/projects/osclient/client.cpp
+D:\bb-b-01\NXT-OS137-BWXFS\libs\oldscape/jagex3/client/input/InputEvent.h
+D:/bb-b-01/NXT-OS137-BWXFS/libs/oldscape/jagex3/sound/pcm_player.cpp
+D:/bb-b-01/NXT-OS137-BWXFS/libs/hal/render/OGL/BufferInterface_OGL.cpp
+NxtApp
+NXT-Windows-64
+D:\bb-b-01\NXT-OS137-BWXFS\build\nxt\bin\osclient\FINAL\osclient.pdb
+</pre>
+
+<p>
+<b>Multilingual strings</b>
+</p>
+
+<p>
+I'm not going to write all of these, but non-English strings exist in the
+binary:
+</p>
+
+<pre class="example">
+Game server connection interrupted. Retrying...
+
+Verbindung zum Spielserver wurde unterbrochen. Erneute Anfrage...
+</pre>
+
+<p>
+I don't know if they've fixed this in RS3, but historically, Jagex/OSRS have
+never had very good, if any, support for anything besides English. So this could
+be a good start?
+</p>
+
+<p>
+<b>Draw distance</b>
+</p>
+
+<p>
+Maybe these are just leftovers from graphics libraries, but these strings might
+suggest an option to change the draw distance was/is being worked on:
+</p>
+
+<pre class="example">
+getdrawdistance
+Current Draw Distance is %d
+setdrawdistance
+Draw Distance is not between min and max(%d/%d).
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3732044" class="outline-3">
+<h3 id="org3732044">Pictures</h3>
+<div class="outline-text-3" id="text-org3732044">
+<p>
+There are a few PNGs embedded in the binary that are error messages of sorts
+offered in multiple languages.
+</p>
+
+<p>
+English: <code>https://i.imgur.com/BeyzHn4.png</code>
+</p>
+
+<p>
+German: <code>https://i.imgur.com/YoOOVlI.png</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1e81d98" class="outline-2">
+<h2 id="org1e81d98">Dynamic stuff (while the game is running&#x2026;)</h2>
+<div class="outline-text-2" id="text-org1e81d98">
+</div>
+<div id="outline-container-org54ec42e" class="outline-3">
+<h3 id="org54ec42e">Stat boosts</h3>
+<div class="outline-text-3" id="text-org54ec42e">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">The order here matches how player stats are laid out in memory.</span>
+<span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Yes, prayer really comes betwen ranged and magic.</span>
+<span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">player_stats</span>
+{
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">attack</span>;
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">defence</span>;
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">strength</span>;
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">hitpoints</span>;
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">ranged</span>;
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">prayer</span>;
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">magic</span>;
+    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">TODO: map out non-combat stats</span>
+};
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Responsible for writing seemingly all combat stats (when potting or
+something): <code>43 89 9c 8d e0ed5100: mov [r13 + r9 * 4 + 0051ede0], ebx</code>
+<ul class="org-ul">
+<li>r13 stays constant across skills &#x2013; in this instance, is always 0x140000000
+<ul class="org-ul">
+<li>This is the start of osclient.exe in memory. Seems like we've got the
+memory region narrowed down to the rw-p region that occurs after
+osclient.exe, but let's see if the stats stay in the same place. Using
+Attack since that's the first stat&#x2026;
+<ul class="org-ul">
+<li>Run 1: 0x14051ede8 - 0x140000000 = 0x51ede0</li>
+<li>This entire instruction appears in osclient.exe so hopefully further
+runs shouldn't even be necessary; I can just do
+osclient.exe+0x0051ede0&#x2026;</li>
+</ul></li>
+</ul></li>
+<li>r9 is what seems to vary:
+<ul class="org-ul">
+<li>attack: 0x0</li>
+<li>defence: 0x1</li>
+<li>strength: 0x2</li>
+<li>Pattern is obvious enough at this point, starts from the beginning of the
+struct and increments by offset * 4 (each stat is 32bit/4byte int)</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>
+At this point, I had enough information to make a basic stat-reader:
+<code>https://i.imgur.com/A0HHL61.png</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2b01f7e" class="outline-3">
+<h3 id="org2b01f7e">NPC animations</h3>
+<div class="outline-text-3" id="text-org2b01f7e">
+<p>
+The following instruction seems to be responsible for writing the
+active/non-idle animations on a player or NPC:
+</p>
+
+<ul class="org-ul">
+<li><code>89 B7 00010000: mov [rdi+00000100],esi</code> where esi is the animation id and
+[rdi+100] is where the animation id is stored</li>
+</ul>
+
+<p>
+Unlike the stat boost stuff, this instruction exists in (at least) two seprate
+locations. I'm not really certain what causes one to be executed over the other,
+but if I had to guess based on what I was seeing in-game, it seemed like one was
+executed when the NPC itself caused the animation update, and the other was
+executed when another object caused the NPC to perform a new animation.
+</p>
+
+<p>
+For example, when an NPC attacks, instruction A would be called, but if I attack
+said NPC and it performs its guard animation, instruction B would be
+called. +This also seems to be consistent with what I saw while spectating
+Maiden fights in 416: she doesn't have a defend animation, so I only ever saw
+one of the instructions being called.+ Nevermind; at Maiden, one of them seems
+responsible for setting the active animation id, and the other seems responsible
+for resetting it (back to -1/ff ff ff ff).
+</p>
+
+<p>
+Consistently tracking NPCs across instances/locations/game restarts has been
+more difficult than tracking the player's own stats. Any particular entity/NPC
+will be located seemingly anywhere in memory, but pointers to the beginning of
+a particular entity seem to exist and be set to null/0 when the entity dies.
+</p>
+
+<p>
+cow attack: 5849
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">npc_or_player</span>
+{
+    <span style="color: #5F7F5F;">//</span><span style="color: #7F9F7F;">char unknown01[36]; // Possible that these 36 bytes could just be skipped,</span>
+                          <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">there was an array of ptrs somewhere that seemed to</span>
+                          <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">do so (i.e., it jumped to +40)</span>
+    <span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">a_good_name</span>
+    {
+        <span style="color: #7CB8BB;">void</span> *<span style="color: #DFAF8F;">ptr</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Cheat Engine seems to think this is a pointer to somewhere</span>
+        <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unk1</span>[8];
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">model_x</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">x-coordinate of your character model. Seems to be -1024</span>
+                     <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">from what oprs devtools suggests?</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">model_y</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">y-coordinate of your character model. matches devtools.</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">rotation</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">0-2047 based on your character's direction</span>
+                      <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">(thank you zhuri!)</span>
+        <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unk3</span>[8];
+    };
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">time_alive</span>;     <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Not sure what the unit of time here is, but starts</span>
+                        <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">from 0 and constantly counts up</span>
+    <span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">animations</span>
+    {
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">i</span>;  <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Idle animation</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">tl</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Turn-left animation</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">tr</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Turn-right animation</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">w</span>;  <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Walk animation</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">wb</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Walk-back animation</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">wl</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Walk-left animation</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">wr</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Walk-right animation</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">r</span>;  <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Run animation</span>
+    };
+    <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unknown02</span>[181]; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Lot of stuff I'm not sure about. Mostly 0s, 1s, and</span>
+                         <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">FF FF FF FFs.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">animation</span>;       <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Current "action" animation.</span>
+    <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unknown03</span>[69];  <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Continuation of unknown03.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">orientation</span>;     <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Same as rotation (ish). I'm told one is client-sided</span>
+                         <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">and another is server-sided.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">pose_anim_timer</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Seems to start counting up when your movement</span>
+                         <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">animation changes (e.g., changing direction), resets</span>
+                         <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">to 0 when complete.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">thirty_two</span>;      <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">it's 32</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">is_moving</span>;       <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">0 standing still, something [1,3] when moving</span>
+    <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unknown03</span>[713]; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Full of pointers, maybe? Too lazy to track them</span>
+                         <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">right now.</span>
+    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">---</span>
+    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">I got bored somewhere around here.</span>
+};
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org726c569" class="outline-4">
+<h4 id="org726c569">Finding a consistent entity/NPC list</h4>
+<div class="outline-text-4" id="text-org726c569">
+<p>
+When an alt disappears:
+</p>
+<ul class="org-ul">
+<li><code>4f 89 64 fd 08: mov [r13 + r15 * 8 + 08], r12</code>
+<ul class="org-ul">
+<li>r13 stays constant, r15 is what varies based on which entity is
+disappearing, r12 is the address of the entity. Seems to imply r13 is the
+start of this list.</li>
+</ul></li>
+</ul>
+
+<p>
+When an NPC dies/disappears in that big list of pointers:
+</p>
+<ul class="org-ul">
+<li><code>4f 89 7c f4 08: mov [r12 + r14 * 8 + 08], r15</code>
+<ul class="org-ul">
+<li>Matches the same consistency rules from above</li>
+<li>r12 offset runs:
+<ol class="org-ol">
+<li>0x141709980 (+0x1709980 from osclient.exe)</li>
+<li>0x141709980 (same offset, woohoo)</li>
+</ol></li>
+<li>osclient.exe seemingly always starts at 0x140000000. Helpful but I'm not
+going to hardcode that just in case it changes across machines or something.</li>
+</ul></li>
+</ul>
+
+<p>
+The two assembly instructions above seem to match typical array
+access/writing/whatever: <code>mov [base + (index * ptrsize) + offset], value</code>
+</p>
+<ul class="org-ul">
+<li><code>base</code> is the start of the array</li>
+<li><code>index</code> is the&#x2026; index of the array, multiplied by `ptrsize`, which is 8 here
+since osclient.exe is 64-bit (i.e. we're dealing with 64-bit/8-byte pointers)</li>
+<li><code>offset</code> determines which element of the current index gets modified
+<ul class="org-ul">
+<li>For example, imagine the following array: <code>[ (A, B), (C, D), (E, F) ]</code>
+<ul class="org-ul">
+<li>offset of 0 would get A, C, or E depending on your index, whereas offset
+of 8 would get B, D, or F</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>
+So, now that we have a consistent offset to the start of some sort of entity
+list, I can work on figuring out these two things:
+</p>
+<ol class="org-ol">
+<li>How big is this list (what is the maximum size)?
+<ul class="org-ul">
+<li>Going back to the asm, <code>mov [r12 + r14 * 8 + 00/08]</code>, knowing that r12 is
+the start of the entity list, I wanted to find how r14 was defined. After
+some thought and some messing around, it turns out r14 is based off the
+NPC's pid (what oprs calls "IDX" in devtools). If you know an NPC's pid in
+advance, you can find the pointer to its struct by <code>base + (pid * 2 * 8)</code>.
+I have no idea why the pid is multiplied by 2, but I can consistently find
+the pointer to an NPC's struct now if I have their pid, so I don't want to
+think about it too much.
+<ul class="org-ul">
+<li>Slight terminology correction: for players, IDX is the pid (player id),
+but for NPCs, IDX is&#x2026; the index</li>
+</ul></li>
+<li></li>
+</ul></li>
+<li>For each entity in the list, how can I get its name (e.g. Cow, Maiden of
+Sugadinti)?</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2021-02-25 Thu 19:12</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
