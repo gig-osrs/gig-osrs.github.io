@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-02-26 Fri 03:34 -->
+<!-- 2021-02-26 Fri 20:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSRS Steam/C++ Client Stuff</title>
@@ -249,31 +249,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org173f66e">What is this?</a></li>
-<li><a href="#orgb6c330f">Static stuff (osclient.exe)</a>
+<li><a href="#orgca1493f">What is this?</a></li>
+<li><a href="#org7c9c5e1">Changelog</a></li>
+<li><a href="#org57963c2">Static stuff (osclient.exe)</a>
 <ul>
-<li><a href="#org3a6a358">Strings</a>
+<li><a href="#org786f36d">Strings</a>
 <ul>
-<li><a href="#org8042b9e">NXT</a></li>
-<li><a href="#org96b1df5">Multilingual strings</a></li>
-<li><a href="#org3db4ed1">Draw distance</a></li>
+<li><a href="#orgbf74821">NXT</a></li>
+<li><a href="#orgccd3b54">Multilingual strings</a></li>
+<li><a href="#org04cded8">Draw distance</a></li>
 </ul>
 </li>
-<li><a href="#orgce545e8">Pictures</a></li>
+<li><a href="#orgf714afb">Pictures</a></li>
 </ul>
 </li>
-<li><a href="#org9d257a0">Dynamic stuff (while the game is running&#x2026;)</a>
+<li><a href="#org2a726c7">Dynamic stuff (while the game is running&#x2026;)</a>
 <ul>
-<li><a href="#org521a345">Stat boosts</a></li>
-<li><a href="#org26ccb30">NPC animations</a>
+<li><a href="#orgfd702f8">Stat boosts</a></li>
+<li><a href="#org4a20ecc">NPC animations</a>
 <ul>
-<li><a href="#orgd16bb98">Finding a consistent entity/NPC list</a></li>
+<li><a href="#org9aa3af0">Finding a consistent entity/NPC list</a></li>
 </ul>
 </li>
-<li><a href="#org5d62d7b">Client settings</a>
+<li><a href="#orga915b16">Client settings</a>
 <ul>
-<li><a href="#orgc7f838e">Draw distance</a></li>
-<li><a href="#orgf90ee07">Interface scaling</a></li>
+<li><a href="#orgcafca9f">Draw distance</a></li>
+<li><a href="#org0c05c6c">Interface scaling</a></li>
+<li><a href="#org7efdd5e">Camera</a></li>
 </ul>
 </li>
 </ul>
@@ -282,9 +284,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org173f66e" class="outline-2">
-<h2 id="org173f66e">What is this?</h2>
-<div class="outline-text-2" id="text-org173f66e">
+<div id="outline-container-orgca1493f" class="outline-2">
+<h2 id="orgca1493f">What is this?</h2>
+<div class="outline-text-2" id="text-orgca1493f">
 <p>
 Ever since the Steam/C++ client was announced, I've been looking forward to
 digging through it. This document is mostly just personal notes/ramblings to
@@ -293,17 +295,31 @@ help me keep track of what I have and haven't done so far.
 </div>
 </div>
 
-<div id="outline-container-orgb6c330f" class="outline-2">
-<h2 id="orgb6c330f">Static stuff (osclient.exe)</h2>
-<div class="outline-text-2" id="text-orgb6c330f">
+<div id="outline-container-org7c9c5e1" class="outline-2">
+<h2 id="org7c9c5e1">Changelog</h2>
+<div class="outline-text-2" id="text-org7c9c5e1">
+<ul class="org-ul">
+<li>2021-02-26 - Steam Client Update
+<ul class="org-ul">
+<li>Stats offset changed: <code>0x51ede0 -&gt; 0x51dcf0</code></li>
+<li>NPC list offset changed: <code>0x1709980 -&gt; 0x17088a0</code></li>
+<li>Draw distance strings were removed entirely</li>
+<li>Draw distance offset now located at <code>0x14043ddf0</code></li>
+</ul></li>
+</ul>
 </div>
-<div id="outline-container-org3a6a358" class="outline-3">
-<h3 id="org3a6a358">Strings</h3>
-<div class="outline-text-3" id="text-org3a6a358">
 </div>
-<div id="outline-container-org8042b9e" class="outline-4">
-<h4 id="org8042b9e">NXT</h4>
-<div class="outline-text-4" id="text-org8042b9e">
+<div id="outline-container-org57963c2" class="outline-2">
+<h2 id="org57963c2">Static stuff (osclient.exe)</h2>
+<div class="outline-text-2" id="text-org57963c2">
+</div>
+<div id="outline-container-org786f36d" class="outline-3">
+<h3 id="org786f36d">Strings</h3>
+<div class="outline-text-3" id="text-org786f36d">
+</div>
+<div id="outline-container-orgbf74821" class="outline-4">
+<h4 id="orgbf74821">NXT</h4>
+<div class="outline-text-4" id="text-orgbf74821">
 <p>
 These strings suggest that Jagex is calling this client "NXT" internally. In
 case you don't know, this is also what they called their revamped RS3 client
@@ -323,9 +339,9 @@ D:\bb-b-01\NXT-OS137-BWXFS\build\nxt\bin\osclient\FINAL\osclient.pdb
 </div>
 </div>
 
-<div id="outline-container-org96b1df5" class="outline-4">
-<h4 id="org96b1df5">Multilingual strings</h4>
-<div class="outline-text-4" id="text-org96b1df5">
+<div id="outline-container-orgccd3b54" class="outline-4">
+<h4 id="orgccd3b54">Multilingual strings</h4>
+<div class="outline-text-4" id="text-orgccd3b54">
 <p>
 I'm not going to write all of these, but non-English strings exist in the
 binary:
@@ -345,9 +361,9 @@ be a good start?
 </div>
 </div>
 
-<div id="outline-container-org3db4ed1" class="outline-4">
-<h4 id="org3db4ed1">Draw distance</h4>
-<div class="outline-text-4" id="text-org3db4ed1">
+<div id="outline-container-org04cded8" class="outline-4">
+<h4 id="org04cded8">Draw distance</h4>
+<div class="outline-text-4" id="text-org04cded8">
 <p>
 Maybe these are just leftovers from graphics libraries, but these strings might
 suggest an option to change the draw distance was/is being worked on:
@@ -363,9 +379,9 @@ Draw Distance is not between min and max(%d/%d).
 </div>
 </div>
 
-<div id="outline-container-orgce545e8" class="outline-3">
-<h3 id="orgce545e8">Pictures</h3>
-<div class="outline-text-3" id="text-orgce545e8">
+<div id="outline-container-orgf714afb" class="outline-3">
+<h3 id="orgf714afb">Pictures</h3>
+<div class="outline-text-3" id="text-orgf714afb">
 <p>
 There are a few PNGs embedded in the binary that are error messages of sorts
 offered in multiple languages.
@@ -382,13 +398,13 @@ German: <code>https://i.imgur.com/YoOOVlI.png</code>
 </div>
 </div>
 
-<div id="outline-container-org9d257a0" class="outline-2">
-<h2 id="org9d257a0">Dynamic stuff (while the game is running&#x2026;)</h2>
-<div class="outline-text-2" id="text-org9d257a0">
+<div id="outline-container-org2a726c7" class="outline-2">
+<h2 id="org2a726c7">Dynamic stuff (while the game is running&#x2026;)</h2>
+<div class="outline-text-2" id="text-org2a726c7">
 </div>
-<div id="outline-container-org521a345" class="outline-3">
-<h3 id="org521a345">Stat boosts</h3>
-<div class="outline-text-3" id="text-org521a345">
+<div id="outline-container-orgfd702f8" class="outline-3">
+<h3 id="orgfd702f8">Stat boosts</h3>
+<div class="outline-text-3" id="text-orgfd702f8">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">The order here matches how player stats are laid out in memory.</span>
 <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Yes, prayer really comes betwen ranged and magic.</span>
@@ -441,9 +457,9 @@ At this point, I had enough information to make a basic stat-reader:
 </div>
 </div>
 
-<div id="outline-container-org26ccb30" class="outline-3">
-<h3 id="org26ccb30">NPC animations</h3>
-<div class="outline-text-3" id="text-org26ccb30">
+<div id="outline-container-org4a20ecc" class="outline-3">
+<h3 id="org4a20ecc">NPC animations</h3>
+<div class="outline-text-3" id="text-org4a20ecc">
 <p>
 The following instruction seems to be responsible for writing the
 active/non-idle animations on a player or NPC:
@@ -533,9 +549,9 @@ cow attack: 5849
 </div>
 </div>
 
-<div id="outline-container-orgd16bb98" class="outline-4">
-<h4 id="orgd16bb98">Finding a consistent entity/NPC list</h4>
-<div class="outline-text-4" id="text-orgd16bb98">
+<div id="outline-container-org9aa3af0" class="outline-4">
+<h4 id="org9aa3af0">Finding a consistent entity/NPC list</h4>
+<div class="outline-text-4" id="text-org9aa3af0">
 <p>
 When an alt disappears:
 </p>
@@ -626,13 +642,13 @@ animation, but it's good enough for a Maiden proof-of-concept.</li>
 </div>
 </div>
 
-<div id="outline-container-org5d62d7b" class="outline-3">
-<h3 id="org5d62d7b">Client settings</h3>
-<div class="outline-text-3" id="text-org5d62d7b">
+<div id="outline-container-orga915b16" class="outline-3">
+<h3 id="orga915b16">Client settings</h3>
+<div class="outline-text-3" id="text-orga915b16">
 </div>
-<div id="outline-container-orgc7f838e" class="outline-4">
-<h4 id="orgc7f838e">Draw distance</h4>
-<div class="outline-text-4" id="text-orgc7f838e">
+<div id="outline-container-orgcafca9f" class="outline-4">
+<h4 id="orgcafca9f">Draw distance</h4>
+<div class="outline-text-4" id="text-orgcafca9f">
 <p>
 The strings <code>getdrawdistance</code> and <code>setdrawdistance</code> exist around other known
 chat commands like <code>renderself</code> and <code>displayfps</code>. Long story short:
@@ -660,9 +676,9 @@ value
 </div>
 </div>
 
-<div id="outline-container-orgf90ee07" class="outline-4">
-<h4 id="orgf90ee07">Interface scaling</h4>
-<div class="outline-text-4" id="text-orgf90ee07">
+<div id="outline-container-org0c05c6c" class="outline-4">
+<h4 id="org0c05c6c">Interface scaling</h4>
+<div class="outline-text-4" id="text-org0c05c6c">
 <p>
 Interface scaling is stored as a float. Due to rounding errors, the scaling
 percentages are slightly off if you're too precise:
@@ -701,6 +717,114 @@ checking beforehand:
 <span style="color: #93E0E3;">minss</span> <span style="color: #F0DFAF; font-weight: bold;">xmm1</span>,[1403D9678] <span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">min(xmm1, 5.00)</span>
 <span style="color: #93E0E3;">movss</span> [rcx+50],xmm1
 </pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7efdd5e" class="outline-4">
+<h4 id="org7efdd5e">Camera</h4>
+<div class="outline-text-4" id="text-org7efdd5e">
+<p>
+While looking for draw distance in the updated client, I managed to stumble
+across a few things related to the camera. The following instructions constantly
+write the draw distance to edi:
+</p>
+
+<ul class="org-ul">
+<li><code>8b 3d c2293400: mov edi,[14043ddf0]</code></li>
+<li><code>8b 3d 0a2e3400: mov edi,[14043ddf0]</code></li>
+</ul>
+
+<p>
+The first instruction seems to run every frame, whereas the second one seems to
+run much less frequently (it was executed only about 1% as many times as the
+first).
+</p>
+
+<p>
+Notable pointers around the disassembly in the first instruction:
+</p>
+
+<ul class="org-ul">
+<li><code>0x141678d08</code>: Facing north, this rests at 24. Rotating the compass clockwise,
+it approaches 32 when facing west, approaches 24 when facing south, 16 when
+facing east, then approaches 24 on the way back north.</li>
+<li><code>0x141678d0c</code>: Same thing, but 74 -&gt; 82 -&gt; 74 -&gt; 66 -&gt; 74.</li>
+</ul>
+
+<p>
+These values are constantly being written to, so editing them directly doesn't
+do much &#x2013; there are other values I want to get to, so I don't want to spend too
+much time here nop'ing out instructions and whatnot.
+</p>
+
+<p>
+Moving onto the second instruction, there are some other notable pointers around
+its dissassembly. They're basically right beside the earlier ones in memory, so
+I'll just start mapping out what I can. All of these values are written to
+directly with <code>mov [address],register</code>-like instructions &#x2013; there's no offsets
+or anything.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">0x141678cf0</span>
+<span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">camera</span>
+{
+    <span style="color: #7CB8BB;">float</span> <span style="color: #DFAF8F;">pitch_maybe</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Starting at bottom (hold down-arrow), starts at ~7.24</span>
+                       <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">and approaches ~14.4 as you get closer to top-down</span>
+                       <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">view.</span>
+    <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">padding01</span>[4]; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Probably padding but not certain. </span>
+    <span style="color: #7CB8BB;">void</span> *<span style="color: #DFAF8F;">pointer01</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Pointer to somewhere; following it leads to three</span>
+                     <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">more pointers to god knows where.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">tile_y</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Current y "tile" of the camera. To help explain what</span>
+                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">this is, face the camera north, then rotate the camera</span>
+                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">until the camera faces south. This should increase,</span>
+                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">indicating the camera moving upwards/north.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">zero1</span>;
+    <span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">scene_x</span>
+    {
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">x1</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">These two function similarly to tile_y. x2 is always x1+50;</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">x2</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">I don't know why there are two of them. Increases as you</span>
+                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">swing the camera east (to look west), decreases when you do</span>
+                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">the opposite.</span>
+    };
+    <span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">scene_y</span>
+    {
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">y1</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">y coordinate this time. Like scene_x, y2 is always y2+50.</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">y2</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">I'm not sure why tile_y exists.</span>
+    };
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">y_rotation</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">[-65535,65536] if there were a disc around the player</span>
+                    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">that the camera rode on, this value would mark the</span>
+                    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">y-coord of the camera. +65536 when south of the player,</span>
+                    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">0 when directly east or west, -65536 north of the player.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">crazy</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Sits at 0 for most of the time, but very briefly changes to</span>
+               <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">strange values.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">zero2</span>;
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">timer</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Some sort of timer that continuously counts upwards. Don't</span>
+               <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">know the unit of time.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">y_unk1</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Not sure about these two. They're only affected by up- and</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">y_unk2</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">down-arrow key camera movements. The first one increases and</span>
+                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">the second one decreases when holding up, and the opposite</span>
+                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">happens with the down arrow. Some sort of distance-to-flat?</span>
+                <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Seems like they're [0, 65535] but hard to say.</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">x_rotation</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">-65535 when west of the player, 65535 when east of the</span>
+                    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">player. Why isn't this beside y_rotation??</span>
+    <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">crazy2</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Alternates between 0 and 65536 sometimes. No idea why.</span>
+    <span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">world</span>
+    {
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">x</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">World x coordinate of camera</span>
+        <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">y</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">World y coordinate of camera</span>
+    }
+};
+</pre>
+</div>
+
+<p>
+Camera zoom (scale) is stored somewhere else entirely. As of 2021-02-26, it can
+be found at <code>0x14043DDD4</code>. It is written to with the instruction <code>66 89 05
+fa013b00: mov [14043ddd4],ax</code>. The value can be modified out of the usual
+constraints (on fixed, this is [181, 1448]).
+</p>
 </div>
 </div>
 </div>
