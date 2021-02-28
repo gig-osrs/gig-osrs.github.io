@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-02-27 Sat 23:14 -->
+<!-- 2021-02-27 Sat 23:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSRS Steam/C++ Client Stuff</title>
@@ -249,33 +249,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc983926">What is this?</a></li>
-<li><a href="#org9f59db9">Changelog</a></li>
-<li><a href="#orgec33865">Static stuff (osclient.exe)</a>
+<li><a href="#orgd0a47bd">What is this?</a></li>
+<li><a href="#org088ba77">Changelog</a></li>
+<li><a href="#org616a6df">Static stuff (osclient.exe)</a>
 <ul>
-<li><a href="#org0a6d4bb">Strings</a>
+<li><a href="#org932430b">Strings</a>
 <ul>
-<li><a href="#orgccf74c7">NXT</a></li>
-<li><a href="#orge8f79de">Multilingual strings</a></li>
-<li><a href="#org69eebba">Draw distance</a></li>
+<li><a href="#org2d6f6d3">NXT</a></li>
+<li><a href="#org6ef12e8">Multilingual strings</a></li>
+<li><a href="#org4c72721">Draw distance</a></li>
 </ul>
 </li>
-<li><a href="#orgcb6d474">Pictures</a></li>
+<li><a href="#org141a3c6">Pictures</a></li>
 </ul>
 </li>
-<li><a href="#orgbe6a23d">Dynamic stuff (while the game is running&#x2026;)</a>
+<li><a href="#org2f664f8">Dynamic stuff (while the game is running&#x2026;)</a>
 <ul>
-<li><a href="#org46ea734">Stat boosts</a></li>
-<li><a href="#org8bfa223">NPC animations</a>
+<li><a href="#org57e4105">Stat boosts</a></li>
+<li><a href="#orgad3910d">NPC animations</a>
 <ul>
-<li><a href="#orgc67f0c1">Finding a consistent entity/NPC list</a></li>
+<li><a href="#org59ce8f0">Finding a consistent entity/NPC list</a></li>
 </ul>
 </li>
-<li><a href="#org770ae6b">Client settings</a>
+<li><a href="#orgbd2aa55">Client settings</a>
 <ul>
-<li><a href="#orgfd15f50">Draw distance</a></li>
-<li><a href="#orgc654baa">Interface scaling</a></li>
-<li><a href="#orgbcf7435">Camera</a></li>
+<li><a href="#orgf358eb5">Draw distance</a></li>
+<li><a href="#org85e2121">Interface scaling</a></li>
+<li><a href="#orgd14d9c5">Camera</a></li>
 </ul>
 </li>
 </ul>
@@ -284,9 +284,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgc983926" class="outline-2">
-<h2 id="orgc983926">What is this?</h2>
-<div class="outline-text-2" id="text-orgc983926">
+<div id="outline-container-orgd0a47bd" class="outline-2">
+<h2 id="orgd0a47bd">What is this?</h2>
+<div class="outline-text-2" id="text-orgd0a47bd">
 <p>
 Ever since the Steam/C++ client was announced, I've been looking forward to
 digging through it. This document is mostly just personal notes/ramblings to
@@ -295,9 +295,9 @@ help me keep track of what I have and haven't done so far.
 </div>
 </div>
 
-<div id="outline-container-org9f59db9" class="outline-2">
-<h2 id="org9f59db9">Changelog</h2>
-<div class="outline-text-2" id="text-org9f59db9">
+<div id="outline-container-org088ba77" class="outline-2">
+<h2 id="org088ba77">Changelog</h2>
+<div class="outline-text-2" id="text-org088ba77">
 <ul class="org-ul">
 <li>2021-02-26 - Steam Client Update
 <ul class="org-ul">
@@ -309,17 +309,17 @@ help me keep track of what I have and haven't done so far.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgec33865" class="outline-2">
-<h2 id="orgec33865">Static stuff (osclient.exe)</h2>
-<div class="outline-text-2" id="text-orgec33865">
+<div id="outline-container-org616a6df" class="outline-2">
+<h2 id="org616a6df">Static stuff (osclient.exe)</h2>
+<div class="outline-text-2" id="text-org616a6df">
 </div>
-<div id="outline-container-org0a6d4bb" class="outline-3">
-<h3 id="org0a6d4bb">Strings</h3>
-<div class="outline-text-3" id="text-org0a6d4bb">
+<div id="outline-container-org932430b" class="outline-3">
+<h3 id="org932430b">Strings</h3>
+<div class="outline-text-3" id="text-org932430b">
 </div>
-<div id="outline-container-orgccf74c7" class="outline-4">
-<h4 id="orgccf74c7">NXT</h4>
-<div class="outline-text-4" id="text-orgccf74c7">
+<div id="outline-container-org2d6f6d3" class="outline-4">
+<h4 id="org2d6f6d3">NXT</h4>
+<div class="outline-text-4" id="text-org2d6f6d3">
 <p>
 These strings suggest that Jagex is calling this client "NXT" internally. In
 case you don't know, this is also what they called their revamped RS3 client
@@ -339,9 +339,9 @@ D:\bb-b-01\NXT-OS137-BWXFS\build\nxt\bin\osclient\FINAL\osclient.pdb
 </div>
 </div>
 
-<div id="outline-container-orge8f79de" class="outline-4">
-<h4 id="orge8f79de">Multilingual strings</h4>
-<div class="outline-text-4" id="text-orge8f79de">
+<div id="outline-container-org6ef12e8" class="outline-4">
+<h4 id="org6ef12e8">Multilingual strings</h4>
+<div class="outline-text-4" id="text-org6ef12e8">
 <p>
 I'm not going to write all of these, but non-English strings exist in the
 binary:
@@ -361,9 +361,9 @@ be a good start?
 </div>
 </div>
 
-<div id="outline-container-org69eebba" class="outline-4">
-<h4 id="org69eebba">Draw distance</h4>
-<div class="outline-text-4" id="text-org69eebba">
+<div id="outline-container-org4c72721" class="outline-4">
+<h4 id="org4c72721">Draw distance</h4>
+<div class="outline-text-4" id="text-org4c72721">
 <p>
 Maybe these are just leftovers from graphics libraries, but these strings might
 suggest an option to change the draw distance was/is being worked on:
@@ -379,9 +379,9 @@ Draw Distance is not between min and max(%d/%d).
 </div>
 </div>
 
-<div id="outline-container-orgcb6d474" class="outline-3">
-<h3 id="orgcb6d474">Pictures</h3>
-<div class="outline-text-3" id="text-orgcb6d474">
+<div id="outline-container-org141a3c6" class="outline-3">
+<h3 id="org141a3c6">Pictures</h3>
+<div class="outline-text-3" id="text-org141a3c6">
 <p>
 There are a few PNGs embedded in the binary that are error messages of sorts
 offered in multiple languages.
@@ -398,13 +398,13 @@ German: <code>https://i.imgur.com/YoOOVlI.png</code>
 </div>
 </div>
 
-<div id="outline-container-orgbe6a23d" class="outline-2">
-<h2 id="orgbe6a23d">Dynamic stuff (while the game is running&#x2026;)</h2>
-<div class="outline-text-2" id="text-orgbe6a23d">
+<div id="outline-container-org2f664f8" class="outline-2">
+<h2 id="org2f664f8">Dynamic stuff (while the game is running&#x2026;)</h2>
+<div class="outline-text-2" id="text-org2f664f8">
 </div>
-<div id="outline-container-org46ea734" class="outline-3">
-<h3 id="org46ea734">Stat boosts</h3>
-<div class="outline-text-3" id="text-org46ea734">
+<div id="outline-container-org57e4105" class="outline-3">
+<h3 id="org57e4105">Stat boosts</h3>
+<div class="outline-text-3" id="text-org57e4105">
 <div class="org-src-container">
 <pre class="src src-c"><span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">The order here matches how player stats are laid out in memory.</span>
 <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Yes, prayer really comes betwen ranged and magic.</span>
@@ -457,9 +457,9 @@ At this point, I had enough information to make a basic stat-reader:
 </div>
 </div>
 
-<div id="outline-container-org8bfa223" class="outline-3">
-<h3 id="org8bfa223">NPC animations</h3>
-<div class="outline-text-3" id="text-org8bfa223">
+<div id="outline-container-orgad3910d" class="outline-3">
+<h3 id="orgad3910d">NPC animations</h3>
+<div class="outline-text-3" id="text-orgad3910d">
 <p>
 The following instruction seems to be responsible for writing the
 active/non-idle animations on a player or NPC:
@@ -550,19 +550,13 @@ jig emote: 2106
     <span style="color: #5F7F5F;">//</span><span style="color: #7F9F7F;">char unknown01[36]; // Possible that these 36 bytes could just be skipped,</span>
                           <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">there was an array of ptrs somewhere that seemed to</span>
                           <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">do so (i.e., it jumped to +40)</span>
-    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">+0</span>
     <span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">a_good_name</span> <span style="color: #DFAF8F;">agn</span>;
-    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">+36</span>
     <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">time_alive</span>;     <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Not sure what the unit of time here is, but starts</span>
                         <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">from 0 and constantly counts up</span>
-    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">+40</span>
     <span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">animations</span> <span style="color: #DFAF8F;">a</span>;
-    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">+72</span>
     <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unknown02</span>[48];  <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Some pointers and zeros. Not sure where they lead.</span>
-    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">+120</span>
     <span style="color: #F0DFAF; font-weight: bold;">struct</span> <span style="color: #7CB8BB;">hitsplat</span> <span style="color: #DFAF8F;">hs</span>;
     <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unknown05</span>[84];
-    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">+256</span>
     <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">animation</span>;       <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Current "action" animation.</span>
     <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unknown03</span>[69];  <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">https://www.youtube.com/watch?v=fq3abPnEEGE</span>
     <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">orientation</span>;     <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Same as rotation (ish). I'm told one is client-sided</span>
@@ -576,7 +570,6 @@ jig emote: 2106
     <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">I got bored somewhere around here.</span>
     <span style="color: #7CB8BB;">char</span> <span style="color: #DFAF8F;">unknown04</span>[531];
     <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">---</span>
-    <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">+876</span>
     <span style="color: #7CB8BB;">int</span> <span style="color: #DFAF8F;">overhead_prayer</span>; <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">Current overhead prayer being used.</span>
                          <span style="color: #5F7F5F;">// </span><span style="color: #7F9F7F;">-1 -&gt; none</span>
                          <span style="color: #5F7F5F;">//  </span><span style="color: #7F9F7F;">0 -&gt; melee</span>
@@ -591,9 +584,9 @@ jig emote: 2106
 </div>
 </div>
 
-<div id="outline-container-orgc67f0c1" class="outline-4">
-<h4 id="orgc67f0c1">Finding a consistent entity/NPC list</h4>
-<div class="outline-text-4" id="text-orgc67f0c1">
+<div id="outline-container-org59ce8f0" class="outline-4">
+<h4 id="org59ce8f0">Finding a consistent entity/NPC list</h4>
+<div class="outline-text-4" id="text-org59ce8f0">
 <p>
 When an alt disappears:
 </p>
@@ -684,13 +677,13 @@ animation, but it's good enough for a Maiden proof-of-concept.</li>
 </div>
 </div>
 
-<div id="outline-container-org770ae6b" class="outline-3">
-<h3 id="org770ae6b">Client settings</h3>
-<div class="outline-text-3" id="text-org770ae6b">
+<div id="outline-container-orgbd2aa55" class="outline-3">
+<h3 id="orgbd2aa55">Client settings</h3>
+<div class="outline-text-3" id="text-orgbd2aa55">
 </div>
-<div id="outline-container-orgfd15f50" class="outline-4">
-<h4 id="orgfd15f50">Draw distance</h4>
-<div class="outline-text-4" id="text-orgfd15f50">
+<div id="outline-container-orgf358eb5" class="outline-4">
+<h4 id="orgf358eb5">Draw distance</h4>
+<div class="outline-text-4" id="text-orgf358eb5">
 <p>
 The strings <code>getdrawdistance</code> and <code>setdrawdistance</code> exist around other known
 chat commands like <code>renderself</code> and <code>displayfps</code>. Long story short:
@@ -718,9 +711,9 @@ value
 </div>
 </div>
 
-<div id="outline-container-orgc654baa" class="outline-4">
-<h4 id="orgc654baa">Interface scaling</h4>
-<div class="outline-text-4" id="text-orgc654baa">
+<div id="outline-container-org85e2121" class="outline-4">
+<h4 id="org85e2121">Interface scaling</h4>
+<div class="outline-text-4" id="text-org85e2121">
 <p>
 Interface scaling is stored as a float. Due to rounding errors, the scaling
 percentages are slightly off if you're too precise:
@@ -763,9 +756,9 @@ checking beforehand:
 </div>
 </div>
 
-<div id="outline-container-orgbcf7435" class="outline-4">
-<h4 id="orgbcf7435">Camera</h4>
-<div class="outline-text-4" id="text-orgbcf7435">
+<div id="outline-container-orgd14d9c5" class="outline-4">
+<h4 id="orgd14d9c5">Camera</h4>
+<div class="outline-text-4" id="text-orgd14d9c5">
 <p>
 While looking for draw distance in the updated client, I managed to stumble
 across a few things related to the camera. The following instructions constantly
